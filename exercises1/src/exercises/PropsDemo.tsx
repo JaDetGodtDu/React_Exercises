@@ -29,6 +29,7 @@ export default function Propsdemo({ title }: BaseProps) {
         name="Bingoloid Bingonium"
         email="bingoloid@bongus.bing"
         isActive={true}
+        singleLine={showHorizontal}
       />
       {/** Add two or more Profiles, but not until you actually have implemented <Profile />   */}
     </>

@@ -8,12 +8,7 @@ type ProfileProps = {
   singleLine?: boolean;
 };
 
-export default function Profile({
-  name,
-  email,
-  isActive,
-  singleLine,
-}: ProfileProps) {
+export default function Profile({name, email, isActive, singleLine,}: ProfileProps) {
   if (singleLine) {
     return (
       <p>

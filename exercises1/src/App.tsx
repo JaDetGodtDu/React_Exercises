@@ -4,6 +4,9 @@ import Propsdemo from "./exercises/PropsDemo";
 import ListDemo from "./exercises/ListDemo";
 import EventDemo1 from "./exercises/EventDemo";
 import FormUncontrolled from "./exercises/FormUncontrolled";
+import StateDemo1 from "./exercises/StateDemo1";
+import StateDemo2 from "./exercises/StateDemo2";
+import StateDemo3 from "./exercises/StateDemo3";
 
 export default function App() {
   const [selectedView, setSelectedView] = useState("info");
@@ -28,8 +31,21 @@ export default function App() {
             ) : null}
             {selectedView == "props1" ? <Propsdemo title="Props Demo" /> : null}
             {selectedView == "listdemo" ? <ListDemo title="List Demo" /> : null}
-            {selectedView == "eventdemo" ? <EventDemo1 title="Event Demo" /> : null}
-            {selectedView == "formuncontrolled" ? <FormUncontrolled title="Uncontrolled Form" /> : null}
+            {selectedView == "eventdemo" ? (
+              <EventDemo1 title="Event Demo" />
+            ) : null}
+            {selectedView == "formuncontrolled" ? (
+              <FormUncontrolled title="Uncontrolled Form" />
+            ) : null}
+            {selectedView == "statedemo1" ? (
+              <StateDemo1 title="State Demo 1" />
+            ) : null}
+            {selectedView == "statedemo2" ? (
+              <StateDemo2 title="State Demo 2" />
+            ) : null}
+            {selectedView == "statedemo3" ? (
+              <StateDemo3 title="State Demo 3" />
+            ) : null}
             {/**Add the exercise components you create for each exercise using the key you used for the matching button  */}
           </div>
         </div>
@@ -57,8 +73,20 @@ const Buttons = (props: ButtonProps) => {
       <button className="btn-w100" onClick={() => handleSelected("eventdemo")}>
         Event Demo
       </button>
-      <button className="btn-w100" onClick={() => handleSelected("formuncontrolled")}>
+      <button
+        className="btn-w100"
+        onClick={() => handleSelected("formuncontrolled")}
+      >
         Uncontrolled Form
+      </button>
+      <button className="btn-w100" onClick={() => handleSelected("statedemo1")}>
+        State Demo 1
+      </button>
+      <button className="btn-w100" onClick={() => handleSelected("statedemo2")}>
+        State Demo 2
+      </button>
+      <button className="btn-w100" onClick={() => handleSelected("statedemo3")}>
+        State Demo 3
       </button>
     </>
   );

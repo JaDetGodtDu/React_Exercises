@@ -30,20 +30,26 @@ export default function FetchDemo1({ title }: BaseProps) {
 
   //Call fetchUser(..) immediately when the component is mounted
   useEffect(() => {
-    if(!user){
-    setLoading(true);
-    fetchUser(userId).then((response) => {
-      setUser(response);
-      setLoading(false);
-      console.log(response);
-    });
-  }
-  }, [ userId, user ]);
+    const cont = new AbortController();
+    if (!user) {
+      setLoading(true);
+      fetchUser(userId, { signal: cont.signal }).then((response) => {
+        setUser(response);
+        setLoading(false);
+        console.log(response);
+      });
+    }
+    return () => {
+      cont.abort();
+    };
+  }, [userId, user]);
 
   return (
     <>
       <h2>{title}</h2>
-      {loading ? (<p>Loading...</p>) : (
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
         <>
           {user && JSON.stringify(user)}
           <br />

@@ -36,8 +36,9 @@ jobs:
           node-version: 18
           cache: 'npm'
       - name: Install dependencies
-        working-directory: ./React_Exercises/exercises1
-        run: npm install
+        run: |
+          cd React_Exercises/exercise1
+          npm install
       - name: Build
         run: npm run build
       - name: Setup Pages

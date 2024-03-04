@@ -13,7 +13,7 @@ function fetchUser(userId: number, options?: object): Promise<User> {
 }
 
 export default function FetchDemo1({ title }: BaseProps) {
-  const [userId, setUserId] = useState(1);
+  const [userId, /* setUserId*/] = useState(1);
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -21,7 +21,7 @@ export default function FetchDemo1({ title }: BaseProps) {
   //Make sure you understand why we don't need useEffect here
   const fetchNextUser = async () => {
     setLoading(true);
-    const nextUser = user?.id + 1 <= 15 ? user.id + 1 : 1;
+    const nextUser = (user?.id ?? 0) + 1 <= 15 ? (user?.id ?? 0) + 1 : 1;
     //Do not set call setUserId here it will cause an extra render
     const theUser = await fetchUser(nextUser);
     setUser(theUser);

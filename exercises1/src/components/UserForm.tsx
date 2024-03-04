@@ -7,16 +7,16 @@ type UserFormProps = BaseProps & {
 };
 
 export default function UserForm({ title, onSubmitUser }: UserFormProps) {
-  const name = useRef(null);
-  const email = useRef(null);
-  const isActive = useRef(null);
+  const name = useRef<HTMLInputElement>(null); 
+  const email = useRef<HTMLInputElement>(null); 
+  const isActive = useRef<HTMLInputElement>(null);
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const newUser: User = {
-      name: name.current.value,
-      email: email.current.value,
-      isActive: isActive.current.checked,
+      name: name.current?.value ?? '',
+      email: email.current?.value ?? '',
+      isActive: isActive.current?.checked ?? false,
     };
     onSubmitUser(newUser);
   };
